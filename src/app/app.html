@@ -13,41 +13,26 @@
       <div class="nav-shell overflow-hidden rounded-[1.75rem] border border-white/12 bg-slate-950/70 backdrop-blur">
         <div class="nav-shell__line h-px w-full bg-[linear-gradient(90deg,transparent,rgba(34,211,238,0.8),rgba(251,191,36,0.4),transparent)]"></div>
         <div class="flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-6">
-          <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center gap-4 md:justify-start">
             <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">
-            TR
+              TR
             </div>
-            <div>
+            <div class="text-center md:text-left">
               <p class="font-display text-lg uppercase tracking-[0.32em] text-white">{{ studioName() }}</p>
-              <p class="text-sm text-slate-300">Sviluppo web professionale per aziende, hospitality e attività locali.</p>
+              <p class="text-sm text-slate-300">Sviluppo web professionale per aziende e attività locali.</p>
             </div>
           </div>
 
-          <nav aria-label="Sezioni della pagina" class="flex flex-wrap items-center gap-2 text-sm text-slate-200">
-            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#studio">
-              <span class="nav-link__index">01</span>
-              <span>Studio</span>
-            </a>
-            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#servizi">
-              <span class="nav-link__index">02</span>
-              <span>Servizi</span>
-            </a>
-            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#portfolio">
-              <span class="nav-link__index">03</span>
-              <span>Portfolio</span>
-            </a>
-            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#stack">
-              <span class="nav-link__index">04</span>
-              <span>Stack</span>
-            </a>
+          <nav aria-label="Sezioni della pagina" class="mx-auto flex flex-wrap items-center justify-center gap-2 text-sm text-slate-200 md:mx-0">
+            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#studio">Studio</a>
+            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#servizi">Servizi</a>
+            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#portfolio">Portfolio</a>
+            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#stack">Stack</a>
           </nav>
 
-          <div class="flex items-center gap-3">
-            <span class="hidden rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[11px] uppercase tracking-[0.22em] text-slate-300 md:inline-flex">
-              UI / UX / DEV
-            </span>
+          <div class="flex items-center justify-center md:justify-end">
             <a class="inline-flex items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20" href="#footer">
-              Team Raro
+              Contatti
             </a>
           </div>
         </div>
@@ -55,9 +40,9 @@
     </header>
 
     <section class="grid scroll-mt-32 items-center gap-10 pb-14 lg:grid-cols-[1.2fr_0.8fr] lg:pb-24">
-      <div class="space-y-8">
+      <div class="space-y-8 text-center lg:text-left">
         <!-- Badge dinamici: arrivano da un signal e mostrano come iterare dati nel template. -->
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap justify-center gap-2 lg:justify-start">
           @for (pill of spotlightPills(); track pill) {
             <span class="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-100">
               {{ pill }}
@@ -65,7 +50,7 @@
           }
         </div>
 
-        <div class="max-w-4xl space-y-5">
+        <div class="mx-auto max-w-4xl space-y-5 lg:mx-0">
           <p class="text-sm font-semibold uppercase tracking-[0.35em] text-amber-200/90">Studio digitale indipendente</p>
           <h1 class="font-display text-5xl leading-none tracking-[-0.06em] text-white sm:text-6xl lg:text-8xl">
             Costruiamo siti web
@@ -77,12 +62,19 @@
           </p>
         </div>
 
-        <div class="flex flex-col gap-3 sm:flex-row">
+        <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
           <a class="inline-flex items-center justify-center rounded-full bg-cyan-300 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200" href="#portfolio">
             Guarda i lavori
           </a>
           <a class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/8 px-6 py-3 text-sm font-semibold text-white transition hover:border-amber-200/60 hover:bg-white/12" href="#studio">
             Scopri lo studio
+          </a>
+        </div>
+
+        <div class="flex justify-center lg:justify-start">
+          <a class="scroll-cue inline-flex items-center gap-3 text-sm font-medium text-slate-300 transition hover:text-white" href="#servizi">
+            <span class="scroll-cue__dot"></span>
+            <span>Scorri per esplorare</span>
           </a>
         </div>
 
@@ -100,8 +92,8 @@
       <!-- Colonna destra: presentazione istituzionale dello studio, senza ruoli divisi per persona. -->
       <div id="studio" class="relative scroll-mt-32">
         <div class="panel-shell rounded-[2rem] border border-white/12 bg-slate-950/35 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur md:p-6">
-          <div class="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(15,23,42,0.92),_rgba(15,23,42,0.72))] p-5 md:p-6">
-            <div class="mb-6 flex items-center justify-between">
+          <div class="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(15,23,42,0.92),_rgba(15,23,42,0.72))] p-5 text-center md:p-6">
+            <div class="mb-6 flex flex-col items-center justify-center gap-3">
               <div>
                 <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Studio</p>
                 <h2 class="mt-2 font-display text-2xl text-white">Una presenza digitale costruita con criterio.</h2>
@@ -128,12 +120,12 @@
 
     <!-- Sezione servizi: tre card grandi e leggibili anche su mobile. -->
     <section id="servizi" class="scroll-mt-32 space-y-6 py-10 md:py-16">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div class="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
         <div class="max-w-2xl">
           <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Servizi</p>
           <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Facciamo siti che sembrano curati da un team serio.</h2>
         </div>
-        <p class="max-w-xl text-sm leading-7 text-slate-300 md:text-base">
+        <p class="max-w-2xl text-sm leading-7 text-slate-300 md:text-base">
           Design netto, contenuti ordinati, performance, chiarezza commerciale e una struttura che funziona bene anche da smartphone.
         </p>
       </div>
@@ -151,7 +143,7 @@
 
     <!-- Sezione visuale: usa immagini reali per comunicare sicurezza, responsive e aggiornamento continuo. -->
     <section class="scroll-mt-32 space-y-6 py-10 md:py-16">
-      <div class="max-w-3xl">
+      <div class="mx-auto max-w-4xl text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Approccio</p>
         <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Sicurezza, responsive e visione aggiornata non sono extra.</h2>
       </div>
@@ -186,7 +178,7 @@
 
     <!-- Portfolio iniziale: ogni progetto ha nome, settore, descrizione e link esterno. -->
     <section id="portfolio" class="scroll-mt-32 space-y-6 py-10 md:py-16">
-      <div class="max-w-2xl">
+      <div class="mx-auto max-w-4xl text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Portfolio</p>
         <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Alcuni lavori già online.</h2>
       </div>
@@ -215,7 +207,7 @@
 
     <!-- Stack tecnologico: diviso per categoria per una lettura più ordinata. -->
     <section id="stack" class="scroll-mt-32 space-y-6 py-10 md:py-16">
-      <div class="max-w-3xl">
+      <div class="mx-auto max-w-4xl text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Stack</p>
         <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Frontend, backend, database e delivery senza fronzoli.</h2>
       </div>
