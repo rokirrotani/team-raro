@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, afterNextRender, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -15,6 +15,12 @@ export class App {
   // Brand e stato navbar condivisi tra tutte le pagine.
   protected readonly studioName = signal('Team Raro');
   protected readonly hasScrolled = signal(false);
+
+  constructor() {
+    afterNextRender(() => {
+      this.onWindowScroll();
+    });
+  }
 
   protected onWindowScroll(): void {
     if (typeof window === 'undefined') {
