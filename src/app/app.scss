@@ -1,0 +1,61 @@
+:host {
+	display: block;
+}
+
+/* Overlay leggero per dare profondità allo sfondo senza appesantire il layout. */
+.grid-overlay {
+	background-image:
+		linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+	background-size: 42px 42px;
+	mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent 85%);
+}
+
+/* Le orb colorate creano movimento visivo continuo ma molto morbido. */
+.orb {
+	animation: float 14s ease-in-out infinite;
+}
+
+.orb-coral {
+	background: rgba(251, 113, 133, 0.32);
+}
+
+.orb-cyan {
+	animation-delay: -4s;
+	background: rgba(34, 211, 238, 0.24);
+}
+
+.orb-gold {
+	animation-delay: -7s;
+	background: rgba(251, 191, 36, 0.18);
+}
+
+/* Contenitore principale della colonna destra con ombra più profonda. */
+.panel-shell {
+	box-shadow: 0 30px 90px rgba(2, 8, 23, 0.45);
+}
+
+/* Piccolo effetto hover per far percepire le card come elementi vivi. */
+.reveal-card {
+	transition:
+		transform 180ms ease,
+		border-color 180ms ease,
+		background-color 180ms ease;
+}
+
+.reveal-card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(103, 232, 249, 0.4);
+	background: rgba(255, 255, 255, 0.09);
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+
+	50% {
+		transform: translate3d(0, -18px, 0) scale(1.08);
+	}
+}

@@ -1,0 +1,25 @@
+@use 'tailwindcss';
+
+/* Variabili globali: aiutano a dare una direzione visiva coerente in tutta la pagina. */
+:root {
+	color-scheme: dark;
+	--page-bg: #07111f;
+	--page-text: #e2e8f0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	background: var(--page-bg);
+	color: var(--page-text);
+	font-family: 'Manrope', sans-serif;
+}
+
+/* Classe utility globale per i titoli principali della landing. */
+.font-display {
+	font-family: 'Space Grotesk', sans-serif;
+}

@@ -1,0 +1,194 @@
+<!-- Hero principale: contiene il messaggio forte, i badge dinamici e i primi CTA. -->
+<main class="relative isolate overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.16),_transparent_42%),linear-gradient(180deg,_#07111f_0%,_#0b1629_45%,_#132238_100%)] text-slate-50">
+  <div class="pointer-events-none absolute inset-0 opacity-70">
+    <div class="orb orb-coral absolute left-[-6rem] top-[-4rem] h-48 w-48 rounded-full blur-3xl md:h-72 md:w-72"></div>
+    <div class="orb orb-cyan absolute right-[-3rem] top-20 h-52 w-52 rounded-full blur-3xl md:h-80 md:w-80"></div>
+    <div class="orb orb-gold absolute bottom-20 left-1/3 h-40 w-40 rounded-full blur-3xl md:h-64 md:w-64"></div>
+    <div class="grid-overlay absolute inset-0"></div>
+  </div>
+
+  <div class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
+    <!-- Navbar minimale: per una one-page bastano anchor link interni. -->
+    <header class="mb-10 flex flex-col gap-4 rounded-full border border-white/12 bg-white/8 px-4 py-3 backdrop-blur md:mb-16 md:flex-row md:items-center md:justify-between md:px-6">
+      <div>
+        <p class="font-display text-lg uppercase tracking-[0.32em] text-cyan-200">{{ studioName() }}</p>
+        <p class="text-sm text-slate-300">Web studio per brand locali e business che vogliono sembrare seri davvero.</p>
+      </div>
+
+      <nav aria-label="Sezioni della pagina" class="flex flex-wrap gap-2 text-sm text-slate-200">
+        <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-300/60 hover:bg-white/10" href="#servizi">Servizi</a>
+        <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-300/60 hover:bg-white/10" href="#portfolio">Portfolio</a>
+        <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-300/60 hover:bg-white/10" href="#stack">Stack</a>
+        <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-300/60 hover:bg-white/10" href="#contatti">Contatti</a>
+      </nav>
+    </header>
+
+    <section class="grid items-center gap-10 pb-14 lg:grid-cols-[1.2fr_0.8fr] lg:pb-24">
+      <div class="space-y-8">
+        <!-- Badge dinamici: arrivano da un signal e mostrano come iterare dati nel template. -->
+        <div class="flex flex-wrap gap-2">
+          @for (pill of spotlightPills(); track pill) {
+            <span class="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-100">
+              {{ pill }}
+            </span>
+          }
+        </div>
+
+        <div class="max-w-4xl space-y-5">
+          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-amber-200/90">One-page studio showcase</p>
+          <h1 class="font-display text-5xl leading-none tracking-[-0.06em] text-white sm:text-6xl lg:text-8xl">
+            Costruiamo siti web
+            <span class="block text-cyan-300">puliti, veloci, memorabili.</span>
+          </h1>
+          <p class="max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            Siamo {{ founders()[0].name }} e {{ founders()[1].name }}. Progettiamo siti vetrina e presenze digitali per aziende,
+            bar, locali, ristoratori, pizzerie e attività che vogliono una presentazione forte, sobria e professionale.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a class="inline-flex items-center justify-center rounded-full bg-cyan-300 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200" href="#portfolio">
+            Guarda i lavori
+          </a>
+          <a class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/8 px-6 py-3 text-sm font-semibold text-white transition hover:border-amber-200/60 hover:bg-white/12" href="#contatti">
+            Prepara i contatti
+          </a>
+        </div>
+
+        <!-- Statistiche derivate da computed: non sono scritte a mano, ma calcolate dai dati sopra. -->
+        <div class="grid gap-4 sm:grid-cols-3">
+          @for (stat of heroStats(); track stat.label) {
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/8 p-5 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-300/40">
+              <p class="font-display text-3xl text-white">{{ stat.value }}</p>
+              <p class="mt-2 text-sm text-slate-300">{{ stat.label }}</p>
+            </article>
+          }
+        </div>
+      </div>
+
+      <!-- Colonna destra: mette in evidenza il team con cards più visive. -->
+      <div class="relative">
+        <div class="panel-shell rounded-[2rem] border border-white/12 bg-slate-950/35 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur md:p-6">
+          <div class="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(15,23,42,0.92),_rgba(15,23,42,0.72))] p-5 md:p-6">
+            <div class="mb-4 flex items-center justify-between">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Studio core</p>
+                <h2 class="mt-2 font-display text-2xl text-white">Doppia anima: creatività + delivery</h2>
+              </div>
+              <span class="rounded-full border border-amber-300/30 bg-amber-300/12 px-3 py-1 text-xs uppercase tracking-[0.22em] text-amber-100">Client only</span>
+            </div>
+
+            <div class="space-y-4">
+              @for (founder of founders(); track founder.name) {
+                <article class="rounded-[1.4rem] border border-white/10 bg-white/6 p-4 transition hover:border-cyan-300/35 hover:bg-white/10">
+                  <p class="text-xs uppercase tracking-[0.3em] text-slate-400">{{ founder.role }}</p>
+                  <h3 class="mt-2 font-display text-2xl text-white">{{ founder.name }}</h3>
+                  <p class="mt-3 text-sm leading-7 text-slate-300">{{ founder.focus }}</p>
+                </article>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sezione servizi: tre card grandi e leggibili anche su mobile. -->
+    <section id="servizi" class="space-y-6 py-10 md:py-16">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Servizi</p>
+          <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Facciamo siti che sembrano curati da un team serio.</h2>
+        </div>
+        <p class="max-w-xl text-sm leading-7 text-slate-300 md:text-base">
+          Design netto, contenuti ordinati, performance, chiarezza commerciale e una struttura che funziona bene anche da smartphone.
+        </p>
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-3">
+        @for (service of services(); track service.title) {
+          <article class="reveal-card rounded-[1.8rem] border border-white/10 bg-white/7 p-6 backdrop-blur">
+            <p class="text-xs uppercase tracking-[0.28em] text-amber-200">{{ service.highlight }}</p>
+            <h3 class="mt-4 font-display text-2xl text-white">{{ service.title }}</h3>
+            <p class="mt-4 text-sm leading-7 text-slate-300">{{ service.description }}</p>
+          </article>
+        }
+      </div>
+    </section>
+
+    <!-- Portfolio iniziale: ogni progetto ha nome, settore, descrizione e link esterno. -->
+    <section id="portfolio" class="space-y-6 py-10 md:py-16">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Portfolio</p>
+        <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Alcuni lavori già online.</h2>
+      </div>
+
+      <div class="grid gap-4 xl:grid-cols-3">
+        @for (project of projects(); track project.url) {
+          <article class="group rounded-[2rem] border border-white/10 bg-slate-900/60 p-6 transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-slate-900/80">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class="text-xs uppercase tracking-[0.28em] text-slate-400">{{ project.domain }}</p>
+                <h3 class="mt-3 font-display text-2xl text-white">{{ project.name }}</h3>
+              </div>
+              <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300">Live</span>
+            </div>
+
+            <p class="mt-5 text-sm leading-7 text-slate-300">{{ project.summary }}</p>
+
+            <a class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition group-hover:text-cyan-200" [href]="project.url" target="_blank" rel="noreferrer">
+              Visita il sito
+              <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        }
+      </div>
+    </section>
+
+    <!-- Stack tecnologico: diviso per categoria per una lettura più ordinata. -->
+    <section id="stack" class="space-y-6 py-10 md:py-16">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Stack</p>
+        <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Frontend, backend, database e delivery senza raccontarla troppo.</h2>
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-2">
+        @for (group of techGroups(); track group.label) {
+          <article class="rounded-[1.8rem] border border-white/10 bg-white/6 p-6">
+            <h3 class="font-display text-2xl text-white">{{ group.label }}</h3>
+            <div class="mt-5 flex flex-wrap gap-2">
+              @for (item of group.items; track item) {
+                <span class="rounded-full border border-white/10 bg-white/10 px-3 py-2 text-sm text-slate-200">{{ item }}</span>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <!-- CTA finale: per ora niente contatti reali, ma la sezione è pronta per essere completata dopo. -->
+    <section id="contatti" class="py-10 md:py-16">
+      <div class="rounded-[2rem] border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.14),_rgba(251,191,36,0.10),_rgba(255,255,255,0.06))] p-6 md:p-10">
+        <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-100">Prossimo step</p>
+        <div class="mt-4 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <div>
+            <h2 class="font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Se vuoi, al prossimo passaggio aggiungiamo contatti, WhatsApp, email, social e form.</h2>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-200 md:text-base">
+              La struttura è già pronta per essere estesa senza backend: possiamo inserire recapiti, call to action, FAQ, recensioni e una sezione prezzi o servizi più dettagliata.
+            </p>
+          </div>
+
+          <div class="rounded-[1.6rem] border border-white/12 bg-slate-950/35 p-5 backdrop-blur">
+            <p class="text-sm leading-7 text-slate-200">
+              Attuale impostazione: sito vetrina Angular, solo client, dinamico nel design ma statico nei contenuti.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">No database</span>
+              <span class="rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">No backend</span>
+              <span class="rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">Ready for VPS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
