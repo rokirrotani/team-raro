@@ -35,6 +35,11 @@
 	box-shadow: 0 30px 90px rgba(2, 8, 23, 0.45);
 }
 
+/* Contenitore della navbar con ombra più misurata e più elegante. */
+.nav-shell {
+	box-shadow: 0 18px 44px rgba(2, 8, 23, 0.22);
+}
+
 /* Piccolo effetto hover per far percepire le card come elementi vivi. */
 .reveal-card {
 	transition:

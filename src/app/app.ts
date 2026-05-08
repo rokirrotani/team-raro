@@ -1,11 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
-type Founder = {
-  name: string;
-  role: string;
-  focus: string;
-};
-
 type Service = {
   title: string;
   description: string;
@@ -32,65 +26,54 @@ type TechGroup = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
-  // Signal principale: contiene il nome dello studio e rende facile cambiare branding in futuro.
+  // Nome studio centralizzato in un signal per riusarlo in hero, navbar e footer.
   protected readonly studioName = signal('Team Raro');
 
-  // Qui teniamo i dati dei founder direttamente nel componente perché il sito è solo vetrina.
-  protected readonly founders = signal<Founder[]>([
-    {
-      name: 'Rrotani Roki',
-      role: 'Frontend & Creative Development',
-      focus: 'Esperienze React, Angular e interfacce che convertono.',
-    },
-    {
-      name: 'Alessandro Olivero',
-      role: 'Full Stack & Delivery',
-      focus: 'Architetture solide, performance, backend e messa online.',
-    },
-  ]);
+  // I nomi del team vengono usati nel copy istituzionale, senza separare competenze personali.
+  protected readonly founders = signal(['Rrotani Roki', 'Alessandro Olivero']);
 
-  // Sezioni dinamiche della landing: ogni card viene renderizzata con @for nel template.
+  // Servizi principali presentati nella vetrina.
   protected readonly services = signal<Service[]>([
     {
       title: 'Siti Vetrina ad Alto Impatto',
-      description: 'Landing page e siti corporate one-page o multi-sezione per aziende che vogliono un’immagine forte e chiara.',
+      description: 'Landing page e siti corporate per attività che vogliono presentarsi con ordine, personalità e autorevolezza.',
       highlight: 'Aziende, professionisti, studi e brand locali',
     },
     {
       title: 'Ristorazione & Locali',
-      description: 'Siti per bar, locali, ristoranti e pizzerie con presentazione menu, eventi, atmosfera e call to action immediate.',
+      description: 'Siti per bar, locali, ristoranti e pizzerie con attenzione a atmosfera, leggibilità, velocità e fruizione mobile.',
       highlight: 'Bar, ristoranti, pizzerie, hospitality',
     },
     {
       title: 'Restyling Moderni',
-      description: 'Prendiamo un sito datato e lo trasformiamo in un’esperienza veloce, leggibile e professionale anche da mobile.',
+      description: 'Ridisegniamo siti datati trasformandoli in presenze digitali più eleganti, reattive e credibili.',
       highlight: 'Refresh visuale, UX e performance',
     },
   ]);
 
-  // Portfolio iniziale: lo user aggiornerà poi con nuovi progetti o dettagli più precisi.
+  // Portfolio iniziale con URL corretti e descrizioni più professionali.
   protected readonly projects = signal<Project[]>([
     {
       name: 'Immobiliare Fides',
-      url: 'https://www.immobliarefides.com',
-      domain: 'Real Estate',
-      summary: 'Presenza digitale pulita e orientata alla fiducia per il settore immobiliare.',
+      url: 'https://www.immobiliarefides.com/',
+      domain: 'Agenzia Immobiliare',
+      summary: 'Presenza digitale elegante e orientata alla fiducia per il settore immobiliare.',
     },
     {
       name: 'Caffè Pellico',
       url: 'https://www.caffepellico.it',
       domain: 'Food & Beverage',
-      summary: 'Identità online più calda, immediata e centrata sull’esperienza del locale.',
+      summary: 'Sito pensato per rafforzare identità, atmosfera e percezione del locale.',
     },
     {
       name: 'Alkimia Saluzzo',
       url: 'https://www.alkimiasaluzzo.it',
       domain: 'Business Presence',
-      summary: 'Sito elegante e leggibile pensato per raccontare brand e servizi con chiarezza.',
+      summary: 'Esperienza web pulita e leggibile, costruita per raccontare servizi e brand con chiarezza.',
     },
   ]);
 
-  // Stack diviso per aree per semplificare il rendering e per studiare come organizzare dati in Angular.
+  // Stack diviso per aree per rendere la lettura immediata e più professionale.
   protected readonly techGroups = signal<TechGroup[]>([
     {
       label: 'Frontend',
@@ -102,7 +85,7 @@ export class App {
     },
     {
       label: 'Database',
-      items: ['MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB', 'NoSQL'],
+      items: ['MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB'],
     },
     {
       label: 'Tooling & Delivery',
@@ -110,19 +93,26 @@ export class App {
     },
   ]);
 
-  // Computed: Angular ricalcola questi numeri automaticamente quando cambiano i signal da cui dipendono.
+  // Blocco istituzionale che sostituisce la vecchia sezione con competenze divise per persona.
+  protected readonly studioHighlights = signal([
+    'Siti corporate e vetrina con identità visiva chiara, pulita e affidabile.',
+    'Esperienze responsive progettate per funzionare bene su desktop, tablet e mobile.',
+    'Approccio completo allo sviluppo: frontend, backend, dati, integrazione e messa online.',
+  ]);
+
+  // Computed: Angular ricalcola questi numeri quando cambiano i dati sorgente.
   protected readonly heroStats = computed(() => [
     { value: `${this.projects().length}+`, label: 'Progetti visibili' },
     { value: `${this.services().length}`, label: 'Linee di servizio' },
     { value: `${this.techGroups().reduce((total, group) => total + group.items.length, 0)}+`, label: 'Tecnologie coperte' },
   ]);
 
-  // Piccoli claim dinamici per dare movimento al layout senza bisogno di backend o database.
+  // Claim brevi per introdurre il tono del brand nella hero.
   protected readonly spotlightPills = signal<string[]>([
-    'One-page di impatto',
+    'Siti vetrina professionali',
     'Responsive mobile-first',
-    'Design sobrio ma forte',
-    'Angular + React mindset',
+    'Design sobrio e distintivo',
+    'Frontend & full stack',
     'Performance e chiarezza',
   ]);
 }

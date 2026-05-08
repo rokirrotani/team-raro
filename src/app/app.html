@@ -8,19 +8,30 @@
   </div>
 
   <div class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
-    <!-- Navbar minimale: per una one-page bastano anchor link interni. -->
-    <header class="mb-10 flex flex-col gap-4 rounded-full border border-white/12 bg-white/8 px-4 py-3 backdrop-blur md:mb-16 md:flex-row md:items-center md:justify-between md:px-6">
-      <div>
-        <p class="font-display text-lg uppercase tracking-[0.32em] text-cyan-200">{{ studioName() }}</p>
-        <p class="text-sm text-slate-300">Web studio per brand locali e business che vogliono sembrare seri davvero.</p>
-      </div>
+    <!-- Navbar principale: più elegante e più credibile per una vetrina professionale. -->
+    <header class="sticky top-4 z-20 mb-10 md:mb-16">
+      <div class="nav-shell flex flex-col gap-4 rounded-[1.75rem] border border-white/12 bg-slate-950/55 px-4 py-4 backdrop-blur md:flex-row md:items-center md:justify-between md:px-6">
+        <div class="flex items-center gap-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">
+            TR
+          </div>
+          <div>
+            <p class="font-display text-lg uppercase tracking-[0.32em] text-white">{{ studioName() }}</p>
+            <p class="text-sm text-slate-300">Sviluppo web professionale per aziende, hospitality e attività locali.</p>
+          </div>
+        </div>
 
-      <nav aria-label="Sezioni della pagina" class="flex flex-wrap gap-2 text-sm text-slate-200">
-        <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-300/60 hover:bg-white/10" href="#servizi">Servizi</a>
-        <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-300/60 hover:bg-white/10" href="#portfolio">Portfolio</a>
-        <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-300/60 hover:bg-white/10" href="#stack">Stack</a>
-        <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-300/60 hover:bg-white/10" href="#contatti">Contatti</a>
-      </nav>
+        <nav aria-label="Sezioni della pagina" class="flex flex-wrap items-center gap-2 text-sm text-slate-200">
+          <a class="rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#studio">Studio</a>
+          <a class="rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#servizi">Servizi</a>
+          <a class="rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#portfolio">Portfolio</a>
+          <a class="rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#stack">Stack</a>
+        </nav>
+
+        <a class="inline-flex items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20" href="#footer">
+          Team Raro
+        </a>
+      </div>
     </header>
 
     <section class="grid items-center gap-10 pb-14 lg:grid-cols-[1.2fr_0.8fr] lg:pb-24">
@@ -35,13 +46,13 @@
         </div>
 
         <div class="max-w-4xl space-y-5">
-          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-amber-200/90">One-page studio showcase</p>
+          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-amber-200/90">Studio digitale indipendente</p>
           <h1 class="font-display text-5xl leading-none tracking-[-0.06em] text-white sm:text-6xl lg:text-8xl">
             Costruiamo siti web
             <span class="block text-cyan-300">puliti, veloci, memorabili.</span>
           </h1>
           <p class="max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-            Siamo {{ founders()[0].name }} e {{ founders()[1].name }}. Progettiamo siti vetrina e presenze digitali per aziende,
+            Siamo {{ founders()[0] }} e {{ founders()[1] }}. Progettiamo siti vetrina e presenze digitali per aziende,
             bar, locali, ristoratori, pizzerie e attività che vogliono una presentazione forte, sobria e professionale.
           </p>
         </div>
@@ -50,8 +61,8 @@
           <a class="inline-flex items-center justify-center rounded-full bg-cyan-300 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200" href="#portfolio">
             Guarda i lavori
           </a>
-          <a class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/8 px-6 py-3 text-sm font-semibold text-white transition hover:border-amber-200/60 hover:bg-white/12" href="#contatti">
-            Prepara i contatti
+          <a class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/8 px-6 py-3 text-sm font-semibold text-white transition hover:border-amber-200/60 hover:bg-white/12" href="#studio">
+            Scopri lo studio
           </a>
         </div>
 
@@ -66,24 +77,27 @@
         </div>
       </div>
 
-      <!-- Colonna destra: mette in evidenza il team con cards più visive. -->
-      <div class="relative">
+      <!-- Colonna destra: presentazione istituzionale dello studio, senza ruoli divisi per persona. -->
+      <div id="studio" class="relative">
         <div class="panel-shell rounded-[2rem] border border-white/12 bg-slate-950/35 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur md:p-6">
           <div class="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(15,23,42,0.92),_rgba(15,23,42,0.72))] p-5 md:p-6">
-            <div class="mb-4 flex items-center justify-between">
+            <div class="mb-6 flex items-center justify-between">
               <div>
-                <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Studio core</p>
-                <h2 class="mt-2 font-display text-2xl text-white">Doppia anima: creatività + delivery</h2>
+                <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Studio</p>
+                <h2 class="mt-2 font-display text-2xl text-white">Una presenza digitale costruita con criterio.</h2>
               </div>
-              <span class="rounded-full border border-amber-300/30 bg-amber-300/12 px-3 py-1 text-xs uppercase tracking-[0.22em] text-amber-100">Client only</span>
+              <span class="rounded-full border border-amber-300/30 bg-amber-300/12 px-3 py-1 text-xs uppercase tracking-[0.22em] text-amber-100">Web Studio</span>
             </div>
 
-            <div class="space-y-4">
-              @for (founder of founders(); track founder.name) {
-                <article class="rounded-[1.4rem] border border-white/10 bg-white/6 p-4 transition hover:border-cyan-300/35 hover:bg-white/10">
-                  <p class="text-xs uppercase tracking-[0.3em] text-slate-400">{{ founder.role }}</p>
-                  <h3 class="mt-2 font-display text-2xl text-white">{{ founder.name }}</h3>
-                  <p class="mt-3 text-sm leading-7 text-slate-300">{{ founder.focus }}</p>
+            <p class="text-sm leading-7 text-slate-300 md:text-base">
+              Team Raro unisce sensibilità visiva e competenza tecnica per realizzare siti che trasmettono ordine, autorevolezza e qualità percepita.
+              Ogni progetto è pensato per valorizzare l'identità del cliente con un design distintivo e una struttura chiara su ogni dispositivo.
+            </p>
+
+            <div class="mt-6 space-y-3">
+              @for (highlight of studioHighlights(); track highlight) {
+                <article class="rounded-[1.4rem] border border-white/10 bg-white/6 px-4 py-4 transition hover:border-cyan-300/35 hover:bg-white/10">
+                  <p class="text-sm leading-7 text-slate-200">{{ highlight }}</p>
                 </article>
               }
             </div>
@@ -148,7 +162,7 @@
     <section id="stack" class="space-y-6 py-10 md:py-16">
       <div class="max-w-3xl">
         <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Stack</p>
-        <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Frontend, backend, database e delivery senza raccontarla troppo.</h2>
+        <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Frontend, backend, database e delivery senza fronzoli.</h2>
       </div>
 
       <div class="grid gap-4 lg:grid-cols-2">
@@ -165,30 +179,42 @@
       </div>
     </section>
 
-    <!-- CTA finale: per ora niente contatti reali, ma la sezione è pronta per essere completata dopo. -->
-    <section id="contatti" class="py-10 md:py-16">
-      <div class="rounded-[2rem] border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.14),_rgba(251,191,36,0.10),_rgba(255,255,255,0.06))] p-6 md:p-10">
-        <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-100">Prossimo step</p>
-        <div class="mt-4 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+    <!-- Footer: chiusura elegante della landing con navigazione interna e portfolio rapido. -->
+    <footer id="footer" class="mt-auto py-10 md:py-16">
+      <div class="rounded-[2rem] border border-white/10 bg-slate-950/45 px-6 py-8 backdrop-blur md:px-8 md:py-10">
+        <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div>
-            <h2 class="font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Se vuoi, al prossimo passaggio aggiungiamo contatti, WhatsApp, email, social e form.</h2>
-            <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-200 md:text-base">
-              La struttura è già pronta per essere estesa senza backend: possiamo inserire recapiti, call to action, FAQ, recensioni e una sezione prezzi o servizi più dettagliata.
+            <p class="font-display text-2xl uppercase tracking-[0.24em] text-white">{{ studioName() }}</p>
+            <p class="mt-4 max-w-xl text-sm leading-7 text-slate-300 md:text-base">
+              Studio indipendente fondato da {{ founders()[0] }} e {{ founders()[1] }}, specializzato nella realizzazione di siti web professionali,
+              eleganti e responsive per imprese, hospitality e attività locali.
             </p>
           </div>
 
-          <div class="rounded-[1.6rem] border border-white/12 bg-slate-950/35 p-5 backdrop-blur">
-            <p class="text-sm leading-7 text-slate-200">
-              Attuale impostazione: sito vetrina Angular, solo client, dinamico nel design ma statico nei contenuti.
-            </p>
-            <div class="mt-5 flex flex-wrap gap-2">
-              <span class="rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">No database</span>
-              <span class="rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">No backend</span>
-              <span class="rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">Ready for VPS</span>
+          <div>
+            <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Navigazione</p>
+            <div class="mt-4 flex flex-col gap-3 text-sm text-slate-300">
+              <a class="transition hover:text-white" href="#studio">Studio</a>
+              <a class="transition hover:text-white" href="#servizi">Servizi</a>
+              <a class="transition hover:text-white" href="#portfolio">Portfolio</a>
+              <a class="transition hover:text-white" href="#stack">Stack</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Lavori selezionati</p>
+            <div class="mt-4 flex flex-col gap-3 text-sm text-slate-300">
+              @for (project of projects(); track project.url) {
+                <a class="transition hover:text-white" [href]="project.url" target="_blank" rel="noreferrer">{{ project.name }}</a>
+              }
             </div>
           </div>
         </div>
+
+        <div class="mt-8 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.22em] text-slate-400">
+          Team Raro · Web Design · Frontend · Full Stack
+        </div>
       </div>
-    </section>
+    </footer>
   </div>
 </main>
