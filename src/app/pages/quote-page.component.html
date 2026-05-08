@@ -1,14 +1,14 @@
 <main class="quote-page page-shell">
   <section class="quote-hero build-in build-delay-1">
     <div class="quote-hero__content">
-      <p class="quote-hero__eyebrow">Preventivo guidato</p>
-      <h1 class="quote-hero__title">Configura il tuo progetto con la nostra piccola AI assistant.</h1>
-      <p class="quote-hero__text">
+      <p class="quote-hero__eyebrow reveal-text" appRevealOnView>Preventivo guidato</p>
+      <h1 class="quote-hero__title reveal-text" appRevealOnView [delay]="110">Configura il tuo progetto con la nostra piccola AI assistant.</h1>
+      <p class="quote-hero__text reveal-text" appRevealOnView [delay]="220">
         Nessun backend, nessun invio automatico: è una simulazione smart per aiutare il cliente a capire ordine di grandezza e scelte principali.
       </p>
     </div>
 
-    <div class="assistant-card">
+    <div class="assistant-card reveal-surface" appRevealOnView [delay]="180">
       <div class="assistant-card__bubble">
         Ciao, sono Raro Bot. Ti accompagno passo passo e ti mostro una stima indicativa in base alle scelte che fai.
       </div>
@@ -29,7 +29,7 @@
 
   <section class="quote-builder build-in build-delay-2">
     <div class="quote-builder__form">
-      <article class="quote-block">
+      <article class="quote-block reveal-surface" appRevealOnView>
         <h2>{{ siteTypeOptions.title }}</h2>
         <p>{{ siteTypeOptions.helper }}</p>
         <div class="quote-options">
@@ -43,7 +43,7 @@
         </div>
       </article>
 
-      <article class="quote-block">
+      <article class="quote-block reveal-surface" appRevealOnView>
         <h2>{{ pageOptions.title }}</h2>
         <p>{{ pageOptions.helper }}</p>
         <div class="quote-options">
@@ -57,7 +57,7 @@
         </div>
       </article>
 
-      <article class="quote-block">
+      <article class="quote-block reveal-surface" appRevealOnView>
         <h2>{{ designOptions.title }}</h2>
         <p>{{ designOptions.helper }}</p>
         <div class="quote-options">
@@ -71,7 +71,7 @@
         </div>
       </article>
 
-      <article class="quote-block">
+      <article class="quote-block reveal-surface" appRevealOnView>
         <h2>Extra utili</h2>
         <p>Aggiungi solo ciò che serve davvero al progetto.</p>
         <div class="quote-options">
@@ -86,7 +86,7 @@
       </article>
     </div>
 
-    <aside class="quote-summary">
+    <aside class="quote-summary reveal-surface" appRevealOnView [delay]="140">
       <p class="quote-summary__eyebrow">Stima simulata</p>
       <h2 class="quote-summary__title">Preventivo indicativo</h2>
       <p class="quote-summary__range">{{ estimateRange().min }}€ - {{ estimateRange().max }}€</p>

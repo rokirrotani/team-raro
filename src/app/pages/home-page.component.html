@@ -15,25 +15,25 @@
 
     <div class="hero__layout">
       <div class="hero__content build-in build-delay-1">
-        <p class="hero__eyebrow">Siti web che fanno salire il livello del tuo brand</p>
+        <p class="hero__eyebrow reveal-text" appRevealOnView> Siti web che fanno salire il livello del tuo brand</p>
 
-        <h1 class="hero__title">
+        <h1 class="hero__title reveal-text reveal-text--hero" appRevealOnView [delay]="120">
           Costruiamo esperienze digitali
           <span>più forti, più chiare, più vive.</span>
         </h1>
 
-        <p class="hero__text">
+        <p class="hero__text reveal-text" appRevealOnView [delay]="220">
           Team Raro progetta siti vetrina, pagine servizi e restyling con una direzione visiva più netta,
           un ritmo più moderno e un'attenzione reale a mobile, performance e percezione del brand.
         </p>
 
-        <div class="hero__actions">
+        <div class="hero__actions reveal-surface" appRevealOnView [delay]="320">
           <a class="hero__button hero__button--primary" routerLink="/preventivo">Simula un preventivo</a>
           <a class="hero__button hero__button--secondary" routerLink="/servizi">Esplora i servizi</a>
         </div>
       </div>
 
-      <aside class="hero__panel build-in build-delay-2">
+      <aside class="hero__panel build-in build-delay-2 reveal-surface" appRevealOnView [delay]="220">
         <p class="hero__panel-label">Focus</p>
         <div class="hero__panel-item">
           <span class="hero__panel-title">Design più pulito</span>
@@ -64,16 +64,16 @@
 
   <section class="profile build-in build-delay-2">
     <div class="section-heading">
-      <p class="section-heading__eyebrow">Profilo</p>
-      <h2 class="section-heading__title">Due freelance, una direzione tecnica e visiva precisa.</h2>
-      <p class="section-heading__text">
+      <p class="section-heading__eyebrow reveal-text" appRevealOnView>Profilo</p>
+      <h2 class="section-heading__title reveal-text" appRevealOnView [delay]="100">Due freelance, una direzione tecnica e visiva precisa.</h2>
+      <p class="section-heading__text reveal-text" appRevealOnView [delay]="180">
         Team Raro nasce dalla collaborazione tra {{ collaborators()[0].name }} e {{ collaborators()[1].name }} per portare sul web progetti più puliti, più credibili e più curati.
       </p>
     </div>
 
     <div class="profile__grid">
       @for (collaborator of collaborators(); track collaborator.name) {
-        <article class="profile__card">
+        <article class="profile__card reveal-surface" appRevealOnView>
           <p class="profile__label">Team Raro</p>
           <h3 class="profile__name">{{ collaborator.name }}</h3>
           <p class="profile__role">{{ collaborator.title }}</p>
@@ -85,7 +85,7 @@
   <section id="home-stats" class="stats-section build-in build-delay-3">
     <div class="stats-grid">
       @for (stat of animatedHeroStats(); track stat.label) {
-        <article class="stats-card">
+        <article class="stats-card reveal-surface" appRevealOnView>
           <p class="stats-card__value">{{ stat.value }}{{ stat.suffix }}</p>
           <p class="stats-card__label">{{ stat.label }}</p>
         </article>
@@ -95,13 +95,13 @@
 
   <section class="services-preview build-in build-delay-4">
     <div class="section-heading">
-      <p class="section-heading__eyebrow">Servizi</p>
-      <h2 class="section-heading__title">Siti web costruiti per comunicare bene e funzionare meglio.</h2>
+      <p class="section-heading__eyebrow reveal-text" appRevealOnView>Servizi</p>
+      <h2 class="section-heading__title reveal-text" appRevealOnView [delay]="100">Siti web costruiti per comunicare bene e funzionare meglio.</h2>
     </div>
 
     <div class="card-grid card-grid--services">
       @for (service of services(); track service.title) {
-        <article class="info-card">
+        <article class="info-card reveal-surface" appRevealOnView>
           <p class="info-card__badge">{{ service.highlight }}</p>
           <h3 class="info-card__title">{{ service.title }}</h3>
           <p class="info-card__text">{{ service.description }}</p>
@@ -112,13 +112,13 @@
 
   <section class="capabilities build-in build-delay-5">
     <div class="section-heading">
-      <p class="section-heading__eyebrow">Approccio</p>
-      <h2 class="section-heading__title">Sicurezza, responsive e visione aggiornata non sono extra.</h2>
+      <p class="section-heading__eyebrow reveal-text" appRevealOnView>Approccio</p>
+      <h2 class="section-heading__title reveal-text" appRevealOnView [delay]="100">Sicurezza, responsive e visione aggiornata non sono extra.</h2>
     </div>
 
     <div class="card-grid card-grid--capabilities">
       @for (capability of capabilities(); track capability.title) {
-        <article class="capability-card">
+        <article class="capability-card reveal-surface" appRevealOnView>
           <div class="capability-card__image-wrap">
             <img
               [ngSrc]="capability.imageSrc"
@@ -142,13 +142,13 @@
 
   <section class="portfolio build-in build-delay-6">
     <div class="section-heading">
-      <p class="section-heading__eyebrow">Portfolio</p>
-      <h2 class="section-heading__title">Alcuni lavori già online.</h2>
+      <p class="section-heading__eyebrow reveal-text" appRevealOnView>Portfolio</p>
+      <h2 class="section-heading__title reveal-text" appRevealOnView [delay]="100">Alcuni lavori già online.</h2>
     </div>
 
     <div class="card-grid card-grid--portfolio">
       @for (project of projects(); track project.url) {
-        <article class="info-card info-card--project">
+        <article class="info-card info-card--project reveal-surface" appRevealOnView>
           <p class="info-card__badge">{{ project.domain }}</p>
           <h3 class="info-card__title">{{ project.name }}</h3>
           <p class="info-card__text">{{ project.summary }}</p>

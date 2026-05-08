@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, afterNextRender, computed, signal } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { RevealOnViewDirective } from '../shared/reveal-on-view.directive';
 
 type Project = {
   name: string;
@@ -28,7 +29,7 @@ type AnimatedStat = {
 
 @Component({
   selector: 'app-home-page',
-  imports: [NgOptimizedImage, RouterLink],
+  imports: [NgOptimizedImage, RouterLink, RevealOnViewDirective],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -126,6 +127,7 @@ export class HomePageComponent {
   ]);
 
   protected readonly animatedHeroStats = signal<AnimatedStat[]>([]);
+  private hasAnimatedStats = false;
 
   constructor() {
     afterNextRender(() => {
@@ -155,6 +157,8 @@ export class HomePageComponent {
       return;
     }
 
+    this.maybeAnimateStats(section);
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting) && !this.homeStatsVisible()) {
@@ -163,13 +167,35 @@ export class HomePageComponent {
           observer.disconnect();
         }
       },
-      { threshold: 0.35 },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -10% 0px',
+      },
     );
 
     observer.observe(section);
   }
 
+  private maybeAnimateStats(section: HTMLElement): void {
+    if (typeof window === 'undefined' || this.hasAnimatedStats) {
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    if (rect.top < viewportHeight * 0.92 && rect.bottom > viewportHeight * 0.08) {
+      this.homeStatsVisible.set(true);
+      this.animateHeroStats();
+    }
+  }
+
   private animateHeroStats(): void {
+    if (this.hasAnimatedStats) {
+      return;
+    }
+
+    this.hasAnimatedStats = true;
     const targets = this.heroStatTargets();
 
     if (typeof window === 'undefined' || typeof performance === 'undefined') {

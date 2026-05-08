@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { RevealOnViewDirective } from '../shared/reveal-on-view.directive';
 
 @Component({
   selector: 'app-services-page',
+  imports: [RevealOnViewDirective],
   templateUrl: './services-page.component.html',
   styleUrl: './services-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

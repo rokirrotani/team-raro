@@ -1,0 +1,18 @@
+<main class="about-page page-shell">
+  <section class="page-hero">
+    <p class="page-hero__eyebrow reveal-text" appRevealOnView>Chi siamo</p>
+    <h1 class="page-hero__title reveal-text" appRevealOnView [delay]="110">Una pagina pronta da completare quando vuoi raccontare davvero Team Raro.</h1>
+    <p class="page-hero__text reveal-text" appRevealOnView [delay]="220">
+      Ho preparato una base pulita e coerente con il resto del sito: puoi usarla per inserire visione, storia, metodo e identità del team senza dover rifare il layout.
+    </p>
+  </section>
+
+  <section class="about-grid">
+    @for (block of blocks(); track block.title) {
+      <article class="about-card reveal-surface" appRevealOnView>
+        <h2>{{ block.title }}</h2>
+        <p>{{ block.text }}</p>
+      </article>
+    }
+  </section>
+</main>

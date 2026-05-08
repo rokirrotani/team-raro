@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AboutPageComponent } from './pages/about-page.component';
 import { ContactsPageComponent } from './pages/contacts-page.component';
 import { HomePageComponent } from './pages/home-page.component';
 import { QuotePageComponent } from './pages/quote-page.component';
@@ -24,6 +25,11 @@ export const appRoutes: Routes = [
     path: 'contatti',
     component: ContactsPageComponent,
     title: 'Team Raro | Contatti',
+  },
+  {
+    path: 'chi-siamo',
+    component: AboutPageComponent,
+    title: 'Team Raro | Chi siamo',
   },
   {
     path: '**',

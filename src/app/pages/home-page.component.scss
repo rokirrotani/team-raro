@@ -195,7 +195,7 @@
 	display: flex;
 	gap: 0.9rem;
 	width: max-content;
-	padding: 1rem 0;
+	padding: 1rem;
 	animation: ticker-move 26s linear infinite;
 }
 
@@ -485,6 +485,10 @@
 		max-width: 10ch;
 	}
 
+	.hero__panel {
+		width: 100%;
+	}
+
 	.hero__text {
 		font-size: 0.98rem;
 	}
@@ -499,5 +503,13 @@
 
 	.hero__ticker-item {
 		font-size: 0.72rem;
+	}
+
+	.profile,
+	.services-preview,
+	.capabilities,
+	.portfolio,
+	.stats-section {
+		padding-inline: 0.75rem;
 	}
 }

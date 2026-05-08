@@ -9,7 +9,7 @@
 }
 
 .page-hero {
-	max-width: 54rem;
+	max-width: 56rem;
 	margin: 0 auto 3rem;
 	text-align: center;
 }
@@ -39,13 +39,13 @@
 	color: rgba(226, 232, 240, 0.82);
 }
 
-.contacts-grid {
+.about-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 1.25rem;
 }
 
-.contact-card {
+.about-card {
 	padding: 1.6rem;
 	border-radius: 1.8rem;
 	border: 1px solid rgba(255, 255, 255, 0.1);
@@ -54,38 +54,21 @@
 	box-shadow: 0 24px 60px rgba(2, 8, 23, 0.16);
 }
 
-.contact-card h2 {
+.about-card h2 {
 	margin: 0;
 	font-family: 'Space Grotesk', sans-serif;
 	font-size: 1.5rem;
 	color: white;
 }
 
-.contact-card p {
+.about-card p {
 	margin: 0.8rem 0 0;
 	line-height: 1.8;
 	color: rgba(226, 232, 240, 0.82);
 }
 
-.build-in {
-	opacity: 0;
-	transform: translateY(22px);
-	animation: build-in 620ms ease forwards;
-}
-
-.build-delay-1 {
-	animation-delay: 90ms;
-}
-
-@keyframes build-in {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
 @media (max-width: 980px) {
-	.contacts-grid {
+	.about-grid {
 		grid-template-columns: 1fr;
 	}
 }

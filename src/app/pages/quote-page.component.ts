@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { RevealOnViewDirective } from '../shared/reveal-on-view.directive';
 
 type Option = {
   label: string;
@@ -15,6 +16,7 @@ type Section = {
 
 @Component({
   selector: 'app-quote-page',
+  imports: [RevealOnViewDirective],
   templateUrl: './quote-page.component.html',
   styleUrl: './quote-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

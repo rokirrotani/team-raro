@@ -9,6 +9,7 @@
       <nav class="app-nav" aria-label="Navigazione principale">
         <a routerLink="/" routerLinkActive="app-nav__link--active" [routerLinkActiveOptions]="{ exact: true }" class="app-nav__link">Home</a>
         <a routerLink="/servizi" routerLinkActive="app-nav__link--active" class="app-nav__link">Servizi</a>
+        <a routerLink="/chi-siamo" routerLinkActive="app-nav__link--active" class="app-nav__link">Chi siamo</a>
         <a routerLink="/preventivo" routerLinkActive="app-nav__link--active" class="app-nav__link">Preventivo</a>
         <a routerLink="/contatti" routerLinkActive="app-nav__link--active" class="app-nav__link">Contatti</a>
       </nav>
@@ -16,4 +17,22 @@
   </header>
 
   <router-outlet></router-outlet>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <p class="site-footer__eyebrow">Team Raro</p>
+        <h2 class="site-footer__title">Design, sviluppo e presenza digitale con una direzione più pulita e più forte.</h2>
+        <p class="site-footer__text">Footer globale visibile su tutte le pagine, pronto da completare con contatti reali, link social e dettagli commerciali.</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        <a routerLink="/">Home</a>
+        <a routerLink="/servizi">Servizi</a>
+        <a routerLink="/chi-siamo">Chi siamo</a>
+        <a routerLink="/preventivo">Preventivo</a>
+        <a routerLink="/contatti">Contatti</a>
+      </nav>
+    </div>
+  </footer>
 </div>
