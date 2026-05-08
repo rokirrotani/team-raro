@@ -43,6 +43,18 @@
 /* Contenitore della navbar con ombra più misurata e più elegante. */
 .nav-shell {
 	box-shadow: 0 18px 44px rgba(2, 8, 23, 0.22);
+	transition:
+		transform 220ms ease,
+		box-shadow 220ms ease,
+		background-color 220ms ease,
+		border-color 220ms ease;
+}
+
+.nav-shell--scrolled {
+	transform: translateY(-2px) scale(0.985);
+	box-shadow: 0 24px 56px rgba(2, 8, 23, 0.34);
+	border-color: rgba(103, 232, 249, 0.2);
+	background: rgba(8, 15, 28, 0.86);
 }
 
 .nav-link {
@@ -81,6 +93,10 @@
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.stat-card {
+	animation: stat-glow 2.4s ease-in-out infinite alternate;
+}
+
 .capability-card {
 	box-shadow: 0 24px 60px rgba(2, 8, 23, 0.24);
 	transition:
@@ -117,6 +133,43 @@
 	background: rgba(255, 255, 255, 0.09);
 }
 
+.build-in {
+	opacity: 0;
+	transform: translateY(26px) scale(0.985);
+}
+
+.page-ready .build-in {
+	animation: build-in 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.build-delay-1 {
+	animation-delay: 90ms;
+}
+
+.build-delay-2 {
+	animation-delay: 180ms;
+}
+
+.build-delay-3 {
+	animation-delay: 270ms;
+}
+
+.build-delay-4 {
+	animation-delay: 360ms;
+}
+
+.build-delay-5 {
+	animation-delay: 450ms;
+}
+
+.build-delay-6 {
+	animation-delay: 540ms;
+}
+
+.build-delay-7 {
+	animation-delay: 630ms;
+}
+
 @keyframes float {
 	0%,
 	100% {
@@ -139,5 +192,27 @@
 
 	100% {
 		box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+	}
+}
+
+@keyframes build-in {
+	0% {
+		opacity: 0;
+		transform: translateY(26px) scale(0.985);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes stat-glow {
+	0% {
+		box-shadow: 0 0 0 rgba(34, 211, 238, 0);
+	}
+
+	100% {
+		box-shadow: 0 8px 30px rgba(34, 211, 238, 0.08);
 	}
 }

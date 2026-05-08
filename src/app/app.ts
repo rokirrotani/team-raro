@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, afterNextRender, computed, signal } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 
 type Service = {
@@ -29,19 +29,47 @@ type Capability = {
   badge: string;
 };
 
+type Collaborator = {
+  name: string;
+  title: string;
+};
+
+type AnimatedStat = {
+  label: string;
+  suffix: string;
+  value: number;
+  target: number;
+};
+
 @Component({
   selector: 'app-root',
   imports: [NgOptimizedImage],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(window:scroll)': 'onWindowScroll()',
+  },
 })
 export class App {
   // Nome studio centralizzato in un signal per riusarlo in hero, navbar e footer.
   protected readonly studioName = signal('Team Raro');
 
-  // I nomi del team vengono usati nel copy istituzionale, senza separare competenze personali.
-  protected readonly founders = signal(['Rrotani Roki', 'Alessandro Olivero']);
+  // Stato visivo della pagina: serve per far reagire navbar e animazioni allo scroll/render.
+  protected readonly hasScrolled = signal(false);
+  protected readonly pageReady = signal(false);
+
+  // I due collaboratori freelance vengono presentati con ruolo accademico/professionale, non con stack separati.
+  protected readonly collaborators = signal<Collaborator[]>([
+    {
+      name: 'Roki Rrotani',
+      title: 'Ingegnere informatico',
+    },
+    {
+      name: 'Alessandro Olivero',
+      title: 'Dottore in Informatica',
+    },
+  ]);
 
   // Servizi principali presentati nella vetrina.
   protected readonly services = signal<Service[]>([
@@ -88,27 +116,31 @@ export class App {
   protected readonly techGroups = signal<TechGroup[]>([
     {
       label: 'Frontend',
-      items: ['Angular', 'React', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'CSS puro'],
+      items: ['Angular', 'React', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'CSS puro', 'UI systems'],
     },
     {
       label: 'Backend',
-      items: ['Node.js', 'Java', 'Python', 'Rust', 'C', 'C++', 'C#'],
+      items: ['Node.js', 'Java', 'Python', 'Rust', 'C', 'C++', 'C#', 'REST API'],
     },
     {
       label: 'Database',
-      items: ['MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB'],
+      items: ['MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB', 'Redis'],
+    },
+    {
+      label: 'AI, ML & Data',
+      items: ['AI/ML', 'Big Data', 'Data Engineering', 'Analytics', 'LLM Apps', 'Automation'],
     },
     {
       label: 'Tooling & Delivery',
-      items: ['Git', 'REST API', 'Responsive Design', 'SEO base', 'Deploy VPS', 'Performance tuning'],
+      items: ['Git', 'Responsive Design', 'SEO base', 'Deploy VPS', 'Performance tuning', 'Docker', 'CI/CD'],
     },
   ]);
 
   // Blocco istituzionale che sostituisce la vecchia sezione con competenze divise per persona.
   protected readonly studioHighlights = signal([
-    'Siti corporate e vetrina con identità visiva chiara, pulita e affidabile.',
+    'Due collaboratori freelance con sede a Torino, operativi su Torino e Provincia di Cuneo.',
     'Esperienze responsive progettate per funzionare bene su desktop, tablet e mobile.',
-    'Approccio completo allo sviluppo: frontend, backend, dati, integrazione e messa online.',
+    'Approccio completo allo sviluppo: frontend, backend, dati, AI, integrazione e messa online.',
   ]);
 
   // Sezione visuale supportata da immagini reali per comunicare aree chiave dello studio.
@@ -142,19 +174,78 @@ export class App {
     },
   ]);
 
-  // Computed: Angular ricalcola questi numeri quando cambiano i dati sorgente.
-  protected readonly heroStats = computed(() => [
-    { value: `${this.projects().length}+`, label: 'Progetti visibili' },
-    { value: `${this.services().length}`, label: 'Linee di servizio' },
-    { value: `${this.techGroups().reduce((total, group) => total + group.items.length, 0)}+`, label: 'Tecnologie coperte' },
+  // Target dei contatori animati in hero.
+  protected readonly heroStatTargets = computed<AnimatedStat[]>(() => [
+    { value: 0, target: this.projects().length, suffix: '+', label: 'Progetti visibili' },
+    { value: 0, target: this.services().length + this.capabilities().length, suffix: '', label: 'Aree di intervento' },
+    { value: 0, target: this.techGroups().reduce((total, group) => total + group.items.length, 0), suffix: '+', label: 'Tecnologie coperte' },
   ]);
+
+  protected readonly animatedHeroStats = signal<AnimatedStat[]>([]);
 
   // Claim brevi per introdurre il tono del brand nella hero.
   protected readonly spotlightPills = signal<string[]>([
-    'Siti vetrina professionali',
+    'Collaboratori freelance',
     'Responsive mobile-first',
     'Design sobrio e distintivo',
-    'Frontend & full stack',
+    'AI, ML & Big Data',
     'Performance e chiarezza',
   ]);
+
+  constructor() {
+    afterNextRender(() => {
+      this.syncAnimatedStats();
+      this.animateHeroStats();
+      this.onWindowScroll();
+      this.pageReady.set(true);
+    });
+  }
+
+  protected onWindowScroll(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    this.hasScrolled.set(window.scrollY > 72);
+  }
+
+  private syncAnimatedStats(): void {
+    this.animatedHeroStats.set(
+      this.heroStatTargets().map((stat) => ({
+        ...stat,
+        value: 0,
+      })),
+    );
+  }
+
+  private animateHeroStats(): void {
+    const targets = this.heroStatTargets();
+
+    if (typeof window === 'undefined' || typeof performance === 'undefined') {
+      this.animatedHeroStats.set(targets);
+      return;
+    }
+
+    const duration = 1400;
+    const startTime = performance.now();
+
+    const step = (timestamp: number) => {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      this.animatedHeroStats.set(
+        targets.map((stat) => ({
+          ...stat,
+          value: Math.round(stat.target * eased),
+        })),
+      );
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  }
 }
