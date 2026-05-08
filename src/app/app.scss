@@ -74,6 +74,28 @@
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.capability-card {
+	box-shadow: 0 24px 60px rgba(2, 8, 23, 0.24);
+	transition:
+		transform 180ms ease,
+		border-color 180ms ease,
+		box-shadow 180ms ease;
+}
+
+.capability-card:hover {
+	transform: translateY(-6px);
+	border-color: rgba(103, 232, 249, 0.26);
+	box-shadow: 0 30px 80px rgba(2, 8, 23, 0.34);
+}
+
+.capability-image {
+	transition: transform 280ms ease;
+}
+
+.capability-card:hover .capability-image {
+	transform: scale(1.04);
+}
+
 /* Piccolo effetto hover per far percepire le card come elementi vivi. */
 .reveal-card {
 	transition:

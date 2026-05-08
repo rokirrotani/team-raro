@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 type Service = {
   title: string;
@@ -18,9 +19,19 @@ type TechGroup = {
   items: string[];
 };
 
+type Capability = {
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  width: number;
+  height: number;
+  badge: string;
+};
+
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -98,6 +109,37 @@ export class App {
     'Siti corporate e vetrina con identità visiva chiara, pulita e affidabile.',
     'Esperienze responsive progettate per funzionare bene su desktop, tablet e mobile.',
     'Approccio completo allo sviluppo: frontend, backend, dati, integrazione e messa online.',
+  ]);
+
+  // Sezione visuale supportata da immagini reali per comunicare aree chiave dello studio.
+  protected readonly capabilities = signal<Capability[]>([
+    {
+      title: 'Sicurezza e affidabilità',
+      description: 'Progettiamo siti con attenzione a struttura, stabilità e protezione dei dati, perché la credibilità passa anche da come vengono trattate sicurezza e fiducia digitale.',
+      imageSrc: 'foto_sicurezza_informatica.jpg',
+      imageAlt: 'Visual tecnologico che richiama sicurezza informatica e protezione dei sistemi digitali.',
+      width: 6016,
+      height: 4016,
+      badge: 'Security First',
+    },
+    {
+      title: 'Responsive su ogni piattaforma',
+      description: 'Pensiamo sempre al mobile e al responsive: i nostri siti sono ottimizzati per PC, tablet e smartphone, con layout leggibili e fluidi in ogni contesto d’uso.',
+      imageSrc: 'mobile.JPG',
+      imageAlt: 'Dispositivo mobile in stile futuristico che rappresenta responsive design e ottimizzazione multi piattaforma.',
+      width: 5472,
+      height: 3648,
+      badge: 'Mobile Optimized',
+    },
+    {
+      title: 'Visione aggiornata e web 3.0',
+      description: 'Seguiamo linguaggi, interfacce e trend emergenti per costruire presenze digitali attuali, con una sensibilità rivolta anche ai mondi web3, innovazione e nuove esperienze online.',
+      imageSrc: 'web3punto0.jpg',
+      imageAlt: 'Scenario digitale futuristico che richiama innovazione, sistemi connessi e visione web 3.0.',
+      width: 6560,
+      height: 4373,
+      badge: 'Always Updated',
+    },
   ]);
 
   // Computed: Angular ricalcola questi numeri quando cambiano i dati sorgente.
