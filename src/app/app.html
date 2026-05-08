@@ -1,72 +1,68 @@
 <!-- Hero principale: contiene il messaggio forte, i badge dinamici e i primi CTA. -->
-<main id="top" class="relative isolate overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.16),_transparent_42%),linear-gradient(180deg,_#07111f_0%,_#0b1629_45%,_#132238_100%)] text-slate-50" [class.page-ready]="pageReady()">
-  <div class="pointer-events-none absolute inset-0 opacity-70">
-    <div class="orb orb-coral absolute left-[-6rem] top-[-4rem] h-48 w-48 rounded-full blur-3xl md:h-72 md:w-72"></div>
-    <div class="orb orb-cyan absolute right-[-3rem] top-20 h-52 w-52 rounded-full blur-3xl md:h-80 md:w-80"></div>
-    <div class="orb orb-gold absolute bottom-20 left-1/3 h-40 w-40 rounded-full blur-3xl md:h-64 md:w-64"></div>
-    <div class="grid-overlay absolute inset-0"></div>
+<main id="top" class="relative isolate overflow-hidden bg-[linear-gradient(180deg,_#08070b_0%,_#12070c_28%,_#140b12_54%,_#0d1320_100%)] text-slate-50" [class.page-ready]="pageReady()">
+  <div class="pointer-events-none absolute inset-0 opacity-80">
+    <div class="hero-glow hero-glow-primary absolute left-1/2 top-[-8rem] h-[24rem] w-[24rem] -translate-x-1/2 rounded-full blur-3xl md:h-[34rem] md:w-[34rem]"></div>
+    <div class="hero-glow hero-glow-secondary absolute left-[18%] top-[6rem] h-[14rem] w-[14rem] rounded-full blur-3xl md:h-[22rem] md:w-[22rem]"></div>
+    <div class="hero-glow hero-glow-tertiary absolute right-[12%] top-[10rem] h-[12rem] w-[12rem] rounded-full blur-3xl md:h-[18rem] md:w-[18rem]"></div>
+    <div class="grid-overlay absolute inset-0 opacity-40"></div>
   </div>
 
   <div class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
-    <!-- Navbar principale: più elegante e più credibile per una vetrina professionale. -->
-    <header class="sticky top-4 z-20 mb-10 md:mb-16">
-      <div class="nav-shell overflow-hidden rounded-[1.75rem] border border-white/12 bg-slate-950/70 backdrop-blur" [class.nav-shell--scrolled]="hasScrolled()">
-        <div class="nav-shell__line h-px w-full bg-[linear-gradient(90deg,transparent,rgba(34,211,238,0.8),rgba(251,191,36,0.4),transparent)]"></div>
-        <div class="flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-6">
-          <div class="flex items-center justify-center gap-4 md:justify-start">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">
+    <!-- Navbar principale: sottile, leggera e più vicina al mood del riferimento. -->
+    <header class="sticky top-2 z-20 mb-10 md:mb-14">
+      <div class="nav-shell nav-shell--minimal overflow-hidden rounded-full border border-white/10 bg-black/32 backdrop-blur-md" [class.nav-shell--scrolled]="hasScrolled()">
+        <div class="flex items-center justify-between gap-4 px-4 py-3 md:px-6">
+          <div class="flex items-center gap-3">
+            <div class="flex h-8 w-8 items-center justify-center rounded-full border border-rose-300/20 bg-rose-300/10 text-[11px] font-semibold uppercase tracking-[0.28em] text-rose-100">
               TR
             </div>
-            <div class="text-center md:text-left">
-              <p class="font-display text-lg uppercase tracking-[0.32em] text-white">{{ studioName() }}</p>
-              <p class="text-sm text-slate-300">Sviluppo web professionale per aziende e attività locali.</p>
-            </div>
+            <p class="font-display text-sm uppercase tracking-[0.24em] text-white md:text-base">{{ studioName() }}</p>
           </div>
 
-          <nav aria-label="Sezioni della pagina" class="mx-auto flex flex-wrap items-center justify-center gap-2 text-sm text-slate-200 md:mx-0">
-            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#studio">Studio</a>
-            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#servizi">Servizi</a>
-            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#portfolio">Portfolio</a>
-            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#stack">Stack</a>
+          <nav aria-label="Sezioni della pagina" class="hidden items-center gap-1 text-xs text-slate-300 md:flex lg:text-sm">
+            <a class="nav-link nav-link--minimal rounded-full px-4 py-2 transition hover:text-white" href="#profilo">Profilo</a>
+            <a class="nav-link nav-link--minimal rounded-full px-4 py-2 transition hover:text-white" href="#servizi">Servizi</a>
+            <a class="nav-link nav-link--minimal rounded-full px-4 py-2 transition hover:text-white" href="#portfolio">Portfolio</a>
+            <a class="nav-link nav-link--minimal rounded-full px-4 py-2 transition hover:text-white" href="#stack">Stack</a>
           </nav>
 
-          <div class="flex items-center justify-center md:justify-end">
-            <a class="inline-flex items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20" href="#footer">
-              Contatti
-            </a>
-          </div>
+          <a class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/8 px-4 py-2 text-xs font-medium text-white transition hover:bg-white/14 md:px-5 md:text-sm" href="#footer">
+            Contatti
+          </a>
         </div>
       </div>
     </header>
 
     <section class="build-in build-delay-1 grid scroll-mt-32 items-center gap-10 pb-14 lg:grid-cols-[1.2fr_0.8fr] lg:pb-24">
-      <div class="space-y-8 text-center">
+      <div class="space-y-8 text-center lg:col-span-2">
         <!-- Badge dinamici: arrivano da un signal e mostrano come iterare dati nel template. -->
         <div class="flex flex-wrap justify-center gap-2">
           @for (pill of spotlightPills(); track pill) {
-            <span class="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-100">
+            <span class="rounded-full border border-white/10 bg-white/8 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-white/80">
               {{ pill }}
             </span>
           }
         </div>
 
         <div class="mx-auto max-w-4xl space-y-5">
-          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-amber-200/90">Collaboratori freelance digitali</p>
-          <h1 class="font-display text-5xl leading-none tracking-[-0.06em] text-white sm:text-6xl lg:text-8xl">
-            Costruiamo siti web
-            <span class="block text-cyan-300">puliti, veloci, memorabili.</span>
+          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-rose-100/80">Collaboratori freelance digitali</p>
+          <h1 class="font-display text-5xl leading-[0.95] tracking-[-0.06em] text-white sm:text-6xl lg:text-8xl">
+            Nuovo livello
+            <span class="hero-text-glow block text-white">per la tua presenza online.</span>
           </h1>
-          <p class="mx-auto max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
-            Siamo {{ collaborators()[0].name }} e {{ collaborators()[1].name }}. Lavoriamo come due collaboratori freelance con sede a Torino,
-            operativi su Torino e Provincia di Cuneo, realizzando siti vetrina e presenze digitali per aziende, locali, ristorazione e attività che vogliono comunicare qualità.
+          <p class="mx-auto max-w-2xl text-base leading-8 text-slate-200/78 sm:text-lg">
+            Siamo {{ collaborators()[0].name }} e {{ collaborators()[1].name }}. Realizziamo siti web e presenze digitali per aziende e attività che vogliono una comunicazione più forte, più pulita e più credibile.
+          </p>
+          <p class="mx-auto max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+            Sede Torino. Operativi su Torino e Provincia di Cuneo.
           </p>
         </div>
 
         <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <a class="inline-flex items-center justify-center rounded-full bg-cyan-300 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200" href="#portfolio">
+          <a class="inline-flex min-w-52 items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100" href="#portfolio">
             Guarda i lavori
           </a>
-          <a class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/8 px-6 py-3 text-sm font-semibold text-white transition hover:border-amber-200/60 hover:bg-white/12" href="#profilo">
+          <a class="inline-flex items-center justify-center rounded-xl border border-white/12 bg-white/8 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/12" href="#profilo">
             Scopri il profilo
           </a>
         </div>
@@ -81,47 +77,47 @@
         <!-- Statistiche derivate da computed: non sono scritte a mano, ma calcolate dai dati sopra. -->
         <div class="mx-auto grid w-full max-w-4xl gap-4 sm:grid-cols-3">
           @for (stat of animatedHeroStats(); track stat.label) {
-            <article class="stat-card rounded-[1.75rem] border border-white/10 bg-white/8 p-5 backdrop-blur transition hover:-translate-y-1 hover:border-cyan-300/40">
+            <article class="stat-card rounded-[1.75rem] border border-white/10 bg-white/6 p-5 backdrop-blur transition hover:-translate-y-1 hover:border-white/20">
               <p class="font-display text-3xl text-white">{{ stat.value }}{{ stat.suffix }}</p>
               <p class="mt-2 text-sm text-slate-300">{{ stat.label }}</p>
             </article>
           }
         </div>
       </div>
+    </section>
 
-      <!-- Colonna destra: presentazione istituzionale dello studio, senza ruoli divisi per persona. -->
-      <div id="profilo" class="build-in build-delay-2 relative scroll-mt-32">
-        <div class="panel-shell rounded-[2rem] border border-white/12 bg-slate-950/35 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur md:p-6">
-          <div class="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(15,23,42,0.92),_rgba(15,23,42,0.72))] p-5 text-center md:p-6">
-            <div class="mb-6 flex flex-col items-center justify-center gap-3">
-              <div>
-                <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Profilo</p>
-                <h2 class="mt-2 font-display text-2xl text-white">Due freelance, una direzione tecnica e visiva precisa.</h2>
-              </div>
-              <span class="rounded-full border border-amber-300/30 bg-amber-300/12 px-3 py-1 text-xs uppercase tracking-[0.22em] text-amber-100">Torino · Cuneo</span>
+    <!-- Profilo: spostato fuori dalla hero per lasciare la pagina iniziale più pulita e più impattante. -->
+    <section id="profilo" class="build-in build-delay-2 scroll-mt-32 py-6 md:py-12">
+      <div class="panel-shell rounded-[2rem] border border-white/12 bg-slate-950/35 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur md:p-6">
+        <div class="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(15,23,42,0.92),_rgba(15,23,42,0.72))] p-5 text-center md:p-6">
+          <div class="mb-6 flex flex-col items-center justify-center gap-3">
+            <div>
+              <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Profilo</p>
+              <h2 class="mt-2 font-display text-2xl text-white">Due freelance, una direzione tecnica e visiva precisa.</h2>
             </div>
+            <span class="rounded-full border border-amber-300/30 bg-amber-300/12 px-3 py-1 text-xs uppercase tracking-[0.22em] text-amber-100">Torino · Cuneo</span>
+          </div>
 
-            <p class="text-sm leading-7 text-slate-300 md:text-base">
-              Team Raro lavora come collaborazione freelance indipendente: uniamo sensibilità visiva, competenza tecnica e attenzione al risultato per realizzare siti che trasmettono ordine, autorevolezza e qualità percepita.
-            </p>
+          <p class="text-sm leading-7 text-slate-300 md:text-base">
+            Team Raro lavora come collaborazione freelance indipendente: uniamo sensibilità visiva, competenza tecnica e attenzione al risultato per realizzare siti che trasmettono ordine, autorevolezza e qualità percepita.
+          </p>
 
-            <div class="mt-6 grid gap-3 md:grid-cols-2">
-              @for (collaborator of collaborators(); track collaborator.name) {
-                <article class="rounded-[1.4rem] border border-white/10 bg-white/6 px-4 py-4 text-left transition hover:border-cyan-300/35 hover:bg-white/10">
-                  <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Collaboratore</p>
-                  <h3 class="mt-2 font-display text-xl text-white">{{ collaborator.name }}</h3>
-                  <p class="mt-2 text-sm leading-7 text-slate-300">{{ collaborator.title }}</p>
-                </article>
-              }
-            </div>
+          <div class="mt-6 grid gap-3 md:grid-cols-2">
+            @for (collaborator of collaborators(); track collaborator.name) {
+              <article class="rounded-[1.4rem] border border-white/10 bg-white/6 px-4 py-4 text-left transition hover:border-cyan-300/35 hover:bg-white/10">
+                <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Collaboratore</p>
+                <h3 class="mt-2 font-display text-xl text-white">{{ collaborator.name }}</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-300">{{ collaborator.title }}</p>
+              </article>
+            }
+          </div>
 
-            <div class="mt-6 space-y-3">
-              @for (highlight of studioHighlights(); track highlight) {
-                <article class="rounded-[1.4rem] border border-white/10 bg-white/6 px-4 py-4 transition hover:border-cyan-300/35 hover:bg-white/10">
-                  <p class="text-sm leading-7 text-slate-200">{{ highlight }}</p>
-                </article>
-              }
-            </div>
+          <div class="mt-6 space-y-3">
+            @for (highlight of studioHighlights(); track highlight) {
+              <article class="rounded-[1.4rem] border border-white/10 bg-white/6 px-4 py-4 transition hover:border-cyan-300/35 hover:bg-white/10">
+                <p class="text-sm leading-7 text-slate-200">{{ highlight }}</p>
+              </article>
+            }
           </div>
         </div>
       </div>
