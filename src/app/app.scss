@@ -27,21 +27,23 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	padding: 0.85rem 1rem;
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 0.9rem 0;
+	border: 1px solid transparent;
 	border-radius: 999px;
-	background: rgba(7, 17, 31, 0.38);
+	background: transparent;
 	backdrop-filter: blur(18px);
-	box-shadow: 0 18px 44px rgba(2, 8, 23, 0.16);
+	box-shadow: none;
 	pointer-events: auto;
 	transition:
 		background-color 220ms ease,
 		border-color 220ms ease,
+		padding 220ms ease,
 		transform 220ms ease,
 		box-shadow 220ms ease;
 }
 
 .app-header--scrolled .app-header__inner {
+	padding: 0.85rem 1rem;
 	background: rgba(7, 17, 31, 0.82);
 	border-color: rgba(103, 232, 249, 0.2);
 	transform: translateY(-2px);
@@ -62,8 +64,8 @@
 	width: 2.25rem;
 	height: 2.25rem;
 	border-radius: 999px;
-	border: 1px solid rgba(34, 211, 238, 0.25);
-	background: rgba(34, 211, 238, 0.12);
+	border: 1px solid rgba(255, 255, 255, 0.28);
+	background: rgba(255, 255, 255, 0.06);
 	color: #cffafe;
 	font-size: 0.75rem;
 	font-weight: 700;
@@ -93,7 +95,7 @@
 	justify-content: center;
 	padding: 0.65rem 1rem;
 	border-radius: 999px;
-	color: rgba(226, 232, 240, 0.78);
+	color: rgba(255, 255, 255, 0.9);
 	text-decoration: none;
 	font-size: 0.9rem;
 	transition:
@@ -109,6 +111,15 @@
 	transform: translateY(-1px);
 }
 
+.app-header:not(.app-header--scrolled) .app-nav__link {
+	background: transparent;
+}
+
+.app-header:not(.app-header--scrolled) .app-nav__link:hover,
+.app-header:not(.app-header--scrolled) .app-nav__link--active {
+	background: rgba(255, 255, 255, 0.04);
+}
+
 @media (max-width: 760px) {
 	.app-header {
 		padding-inline: 0.75rem;
@@ -116,8 +127,12 @@
 
 	.app-header__inner {
 		border-radius: 1.5rem;
-		padding: 0.85rem;
+		padding: 0.85rem 0;
 		flex-direction: column;
+	}
+
+	.app-header--scrolled .app-header__inner {
+		padding: 0.85rem;
 	}
 
 	.app-nav {

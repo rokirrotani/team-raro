@@ -39,11 +39,13 @@ export class HomePageComponent {
     { name: 'Alessandro Olivero', title: 'Dottore in Informatica' },
   ]);
 
-  protected readonly spotlightPills = signal([
-    'Collaboratori freelance',
+  protected readonly heroTicker = signal([
+    'Web design premium',
+    'Landing ad alta conversione',
     'Responsive mobile-first',
     'AI, ML & Big Data',
     'Performance e chiarezza',
+    'Restyling moderni',
   ]);
 
   protected readonly services = signal([
