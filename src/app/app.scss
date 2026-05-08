@@ -2,6 +2,11 @@
 	display: block;
 }
 
+/* Ancora per il pulsante "torna su" nel footer. */
+:host {
+	view-transition-name: page-root;
+}
+
 /* Overlay leggero per dare profondità allo sfondo senza appesantire il layout. */
 .grid-overlay {
 	background-image:
@@ -38,6 +43,35 @@
 /* Contenitore della navbar con ombra più misurata e più elegante. */
 .nav-shell {
 	box-shadow: 0 18px 44px rgba(2, 8, 23, 0.22);
+}
+
+.nav-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	border: 1px solid transparent;
+}
+
+.nav-link:hover {
+	border-color: rgba(148, 163, 184, 0.18);
+}
+
+.nav-link__index {
+	font-size: 0.68rem;
+	letter-spacing: 0.22em;
+	color: rgba(103, 232, 249, 0.78);
+}
+
+.footer-shell {
+	box-shadow: 0 26px 70px rgba(2, 8, 23, 0.3);
+}
+
+.footer-client {
+	backdrop-filter: blur(8px);
+}
+
+.footer-bottom {
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Piccolo effetto hover per far percepire le card come elementi vivi. */

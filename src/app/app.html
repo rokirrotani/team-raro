@@ -1,5 +1,5 @@
 <!-- Hero principale: contiene il messaggio forte, i badge dinamici e i primi CTA. -->
-<main class="relative isolate overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.16),_transparent_42%),linear-gradient(180deg,_#07111f_0%,_#0b1629_45%,_#132238_100%)] text-slate-50">
+<main id="top" class="relative isolate overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.16),_transparent_42%),linear-gradient(180deg,_#07111f_0%,_#0b1629_45%,_#132238_100%)] text-slate-50">
   <div class="pointer-events-none absolute inset-0 opacity-70">
     <div class="orb orb-coral absolute left-[-6rem] top-[-4rem] h-48 w-48 rounded-full blur-3xl md:h-72 md:w-72"></div>
     <div class="orb orb-cyan absolute right-[-3rem] top-20 h-52 w-52 rounded-full blur-3xl md:h-80 md:w-80"></div>
@@ -10,31 +10,51 @@
   <div class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
     <!-- Navbar principale: più elegante e più credibile per una vetrina professionale. -->
     <header class="sticky top-4 z-20 mb-10 md:mb-16">
-      <div class="nav-shell flex flex-col gap-4 rounded-[1.75rem] border border-white/12 bg-slate-950/55 px-4 py-4 backdrop-blur md:flex-row md:items-center md:justify-between md:px-6">
-        <div class="flex items-center gap-4">
-          <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">
+      <div class="nav-shell overflow-hidden rounded-[1.75rem] border border-white/12 bg-slate-950/70 backdrop-blur">
+        <div class="nav-shell__line h-px w-full bg-[linear-gradient(90deg,transparent,rgba(34,211,238,0.8),rgba(251,191,36,0.4),transparent)]"></div>
+        <div class="flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-6">
+          <div class="flex items-center gap-4">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200">
             TR
+            </div>
+            <div>
+              <p class="font-display text-lg uppercase tracking-[0.32em] text-white">{{ studioName() }}</p>
+              <p class="text-sm text-slate-300">Sviluppo web professionale per aziende, hospitality e attività locali.</p>
+            </div>
           </div>
-          <div>
-            <p class="font-display text-lg uppercase tracking-[0.32em] text-white">{{ studioName() }}</p>
-            <p class="text-sm text-slate-300">Sviluppo web professionale per aziende, hospitality e attività locali.</p>
+
+          <nav aria-label="Sezioni della pagina" class="flex flex-wrap items-center gap-2 text-sm text-slate-200">
+            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#studio">
+              <span class="nav-link__index">01</span>
+              <span>Studio</span>
+            </a>
+            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#servizi">
+              <span class="nav-link__index">02</span>
+              <span>Servizi</span>
+            </a>
+            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#portfolio">
+              <span class="nav-link__index">03</span>
+              <span>Portfolio</span>
+            </a>
+            <a class="nav-link rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#stack">
+              <span class="nav-link__index">04</span>
+              <span>Stack</span>
+            </a>
+          </nav>
+
+          <div class="flex items-center gap-3">
+            <span class="hidden rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[11px] uppercase tracking-[0.22em] text-slate-300 md:inline-flex">
+              UI / UX / DEV
+            </span>
+            <a class="inline-flex items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20" href="#footer">
+              Team Raro
+            </a>
           </div>
         </div>
-
-        <nav aria-label="Sezioni della pagina" class="flex flex-wrap items-center gap-2 text-sm text-slate-200">
-          <a class="rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#studio">Studio</a>
-          <a class="rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#servizi">Servizi</a>
-          <a class="rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#portfolio">Portfolio</a>
-          <a class="rounded-full px-4 py-2 transition hover:bg-white/8 hover:text-white" href="#stack">Stack</a>
-        </nav>
-
-        <a class="inline-flex items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20" href="#footer">
-          Team Raro
-        </a>
       </div>
     </header>
 
-    <section class="grid items-center gap-10 pb-14 lg:grid-cols-[1.2fr_0.8fr] lg:pb-24">
+    <section class="grid scroll-mt-32 items-center gap-10 pb-14 lg:grid-cols-[1.2fr_0.8fr] lg:pb-24">
       <div class="space-y-8">
         <!-- Badge dinamici: arrivano da un signal e mostrano come iterare dati nel template. -->
         <div class="flex flex-wrap gap-2">
@@ -78,7 +98,7 @@
       </div>
 
       <!-- Colonna destra: presentazione istituzionale dello studio, senza ruoli divisi per persona. -->
-      <div id="studio" class="relative">
+      <div id="studio" class="relative scroll-mt-32">
         <div class="panel-shell rounded-[2rem] border border-white/12 bg-slate-950/35 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur md:p-6">
           <div class="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(15,23,42,0.92),_rgba(15,23,42,0.72))] p-5 md:p-6">
             <div class="mb-6 flex items-center justify-between">
@@ -107,7 +127,7 @@
     </section>
 
     <!-- Sezione servizi: tre card grandi e leggibili anche su mobile. -->
-    <section id="servizi" class="space-y-6 py-10 md:py-16">
+    <section id="servizi" class="scroll-mt-32 space-y-6 py-10 md:py-16">
       <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div class="max-w-2xl">
           <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Servizi</p>
@@ -130,7 +150,7 @@
     </section>
 
     <!-- Portfolio iniziale: ogni progetto ha nome, settore, descrizione e link esterno. -->
-    <section id="portfolio" class="space-y-6 py-10 md:py-16">
+    <section id="portfolio" class="scroll-mt-32 space-y-6 py-10 md:py-16">
       <div class="max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Portfolio</p>
         <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Alcuni lavori già online.</h2>
@@ -159,7 +179,7 @@
     </section>
 
     <!-- Stack tecnologico: diviso per categoria per una lettura più ordinata. -->
-    <section id="stack" class="space-y-6 py-10 md:py-16">
+    <section id="stack" class="scroll-mt-32 space-y-6 py-10 md:py-16">
       <div class="max-w-3xl">
         <p class="text-sm font-semibold uppercase tracking-[0.32em] text-cyan-200">Stack</p>
         <h2 class="mt-3 font-display text-4xl tracking-[-0.05em] text-white sm:text-5xl">Frontend, backend, database e delivery senza fronzoli.</h2>
@@ -181,14 +201,21 @@
 
     <!-- Footer: chiusura elegante della landing con navigazione interna e portfolio rapido. -->
     <footer id="footer" class="mt-auto py-10 md:py-16">
-      <div class="rounded-[2rem] border border-white/10 bg-slate-950/45 px-6 py-8 backdrop-blur md:px-8 md:py-10">
-        <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+      <div class="footer-shell overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/45 backdrop-blur">
+        <div class="h-px w-full bg-[linear-gradient(90deg,transparent,rgba(34,211,238,0.8),rgba(251,191,36,0.35),transparent)]"></div>
+        <div class="px-6 py-8 md:px-8 md:py-10">
+          <div class="grid gap-8 lg:grid-cols-[1.15fr_0.75fr_0.75fr_0.9fr]">
           <div>
             <p class="font-display text-2xl uppercase tracking-[0.24em] text-white">{{ studioName() }}</p>
             <p class="mt-4 max-w-xl text-sm leading-7 text-slate-300 md:text-base">
               Studio indipendente fondato da {{ founders()[0] }} e {{ founders()[1] }}, specializzato nella realizzazione di siti web professionali,
               eleganti e responsive per imprese, hospitality e attività locali.
             </p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="rounded-full border border-cyan-300/20 bg-cyan-300/8 px-3 py-2 text-xs uppercase tracking-[0.2em] text-cyan-100">Design Systems</span>
+              <span class="rounded-full border border-cyan-300/20 bg-cyan-300/8 px-3 py-2 text-xs uppercase tracking-[0.2em] text-cyan-100">Frontend Engineering</span>
+              <span class="rounded-full border border-cyan-300/20 bg-cyan-300/8 px-3 py-2 text-xs uppercase tracking-[0.2em] text-cyan-100">Full Stack Delivery</span>
+            </div>
           </div>
 
           <div>
@@ -209,10 +236,46 @@
               }
             </div>
           </div>
+
+          <div>
+            <p class="text-xs uppercase tracking-[0.28em] text-cyan-200">Competenze</p>
+            <div class="mt-4 flex flex-col gap-3 text-sm text-slate-300">
+              <span>Interfacce HCI-oriented</span>
+              <span>Architetture responsive</span>
+              <span>Frontend e integrazione backend</span>
+              <span>Performance e chiarezza visiva</span>
+            </div>
+          </div>
         </div>
 
-        <div class="mt-8 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.22em] text-slate-400">
-          Team Raro · Web Design · Frontend · Full Stack
+          <div class="footer-clients mt-8 border-t border-white/10 pt-6">
+            <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Selezione progetti</p>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
+              @for (project of projects(); track project.url) {
+                <a class="footer-client rounded-[1.25rem] border border-white/8 bg-white/5 px-4 py-4 text-center text-xs font-semibold uppercase tracking-[0.18em] text-slate-300 transition hover:border-cyan-300/30 hover:text-white" [href]="project.url" target="_blank" rel="noreferrer">
+                  {{ project.name }}
+                </a>
+              }
+            </div>
+          </div>
+
+          <div class="footer-bottom mt-8 grid gap-5 rounded-[1.5rem] border border-cyan-300/10 bg-[linear-gradient(90deg,_rgba(8,15,28,0.95),_rgba(8,23,39,0.92),_rgba(11,30,50,0.95))] px-5 py-5 lg:grid-cols-[1fr_auto_auto] lg:items-center">
+            <div>
+              <p class="font-display text-lg uppercase tracking-[0.24em] text-white">Team Raro</p>
+              <p class="mt-1 text-xs uppercase tracking-[0.22em] text-slate-400">Web Design · Frontend · Full Stack</p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.18em] text-slate-300">
+              <span class="rounded-full border border-white/10 px-3 py-2">Angular</span>
+              <span class="rounded-full border border-white/10 px-3 py-2">React</span>
+              <span class="rounded-full border border-white/10 px-3 py-2">Node</span>
+              <span class="rounded-full border border-white/10 px-3 py-2">Java</span>
+            </div>
+
+            <a class="inline-flex items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/20" href="#top">
+              Torna su
+            </a>
+          </div>
         </div>
       </div>
     </footer>
