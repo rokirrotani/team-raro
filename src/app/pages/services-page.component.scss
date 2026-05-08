@@ -1,0 +1,95 @@
+:host {
+	display: block;
+}
+
+.page-shell {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 9rem 1rem 4rem;
+}
+
+.page-hero {
+	max-width: 54rem;
+	margin: 0 auto 3rem;
+	text-align: center;
+}
+
+.page-hero__eyebrow {
+	margin: 0;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	color: #67e8f9;
+}
+
+.page-hero__title {
+	margin: 1rem 0 0;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: clamp(2.5rem, 6vw, 4.4rem);
+	line-height: 1;
+	letter-spacing: -0.05em;
+	color: white;
+}
+
+.page-hero__text {
+	margin: 1.25rem auto 0;
+	max-width: 42rem;
+	line-height: 1.9;
+	color: rgba(226, 232, 240, 0.82);
+}
+
+.services-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.25rem;
+}
+
+.service-card {
+	padding: 1.6rem;
+	border-radius: 1.8rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(14px);
+	box-shadow: 0 24px 60px rgba(2, 8, 23, 0.16);
+}
+
+.service-card__title {
+	margin: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 1.5rem;
+	color: white;
+}
+
+.service-card__text {
+	margin: 0.8rem 0 0;
+	line-height: 1.8;
+	color: rgba(226, 232, 240, 0.82);
+}
+
+.build-in {
+	opacity: 0;
+	transform: translateY(22px);
+	animation: build-in 620ms ease forwards;
+}
+
+.build-delay-1 {
+	animation-delay: 90ms;
+}
+
+.build-delay-2 {
+	animation-delay: 180ms;
+}
+
+@keyframes build-in {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (max-width: 900px) {
+	.services-grid {
+		grid-template-columns: 1fr;
+	}
+}

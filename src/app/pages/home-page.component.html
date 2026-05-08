@@ -1,0 +1,135 @@
+<main class="home-page">
+  <section class="hero">
+    <img
+      ngSrc="web3punto0.jpg"
+      alt="Scenario digitale futuristico usato come hero visiva della home page."
+      width="6560"
+      height="4373"
+      class="hero__image"
+      priority
+      sizes="100vw"
+    />
+    <div class="hero__overlay"></div>
+    <div class="hero__glass hero__glass--left"></div>
+    <div class="hero__glass hero__glass--right"></div>
+
+    <div class="hero__content build-in build-delay-1">
+      <div class="hero__pills">
+        @for (pill of spotlightPills(); track pill) {
+          <span class="hero__pill">{{ pill }}</span>
+        }
+      </div>
+
+      <h1 class="hero__title">
+        Le tue pagine web,
+        <span>con identità, impatto e chiarezza.</span>
+      </h1>
+
+      <p class="hero__text">
+        Due collaboratori freelance con sede a Torino, operativi su Torino e Provincia di Cuneo.
+        Progettiamo siti vetrina, landing page e presenze digitali pulite, forti e professionali.
+      </p>
+
+      <div class="hero__actions">
+        <a class="hero__button hero__button--primary" routerLink="/preventivo">Chiedi un preventivo</a>
+        <a class="hero__button hero__button--secondary" routerLink="/servizi">Scopri i servizi</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="profile build-in build-delay-2">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Profilo</p>
+      <h2 class="section-heading__title">Due freelance, una direzione tecnica e visiva precisa.</h2>
+      <p class="section-heading__text">
+        Team Raro nasce dalla collaborazione tra {{ collaborators()[0].name }} e {{ collaborators()[1].name }} per portare sul web progetti più puliti, più credibili e più curati.
+      </p>
+    </div>
+
+    <div class="profile__grid">
+      @for (collaborator of collaborators(); track collaborator.name) {
+        <article class="profile__card">
+          <p class="profile__label">Collaboratore</p>
+          <h3 class="profile__name">{{ collaborator.name }}</h3>
+          <p class="profile__role">{{ collaborator.title }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section id="home-stats" class="stats-section build-in build-delay-3">
+    <div class="stats-grid">
+      @for (stat of animatedHeroStats(); track stat.label) {
+        <article class="stats-card">
+          <p class="stats-card__value">{{ stat.value }}{{ stat.suffix }}</p>
+          <p class="stats-card__label">{{ stat.label }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="services-preview build-in build-delay-4">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Servizi</p>
+      <h2 class="section-heading__title">Siti web costruiti per comunicare bene e funzionare meglio.</h2>
+    </div>
+
+    <div class="card-grid card-grid--services">
+      @for (service of services(); track service.title) {
+        <article class="info-card">
+          <p class="info-card__badge">{{ service.highlight }}</p>
+          <h3 class="info-card__title">{{ service.title }}</h3>
+          <p class="info-card__text">{{ service.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="capabilities build-in build-delay-5">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Approccio</p>
+      <h2 class="section-heading__title">Sicurezza, responsive e visione aggiornata non sono extra.</h2>
+    </div>
+
+    <div class="card-grid card-grid--capabilities">
+      @for (capability of capabilities(); track capability.title) {
+        <article class="capability-card">
+          <div class="capability-card__image-wrap">
+            <img
+              [ngSrc]="capability.imageSrc"
+              [alt]="capability.imageAlt"
+              [width]="capability.width"
+              [height]="capability.height"
+              class="capability-card__image"
+              sizes="(max-width: 1024px) 100vw, 33vw"
+            />
+            <span class="capability-card__badge">{{ capability.badge }}</span>
+          </div>
+
+          <div class="capability-card__body">
+            <h3 class="capability-card__title">{{ capability.title }}</h3>
+            <p class="capability-card__text">{{ capability.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="portfolio build-in build-delay-6">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Portfolio</p>
+      <h2 class="section-heading__title">Alcuni lavori già online.</h2>
+    </div>
+
+    <div class="card-grid card-grid--portfolio">
+      @for (project of projects(); track project.url) {
+        <article class="info-card info-card--project">
+          <p class="info-card__badge">{{ project.domain }}</p>
+          <h3 class="info-card__title">{{ project.name }}</h3>
+          <p class="info-card__text">{{ project.summary }}</p>
+          <a class="info-card__link" [href]="project.url" target="_blank" rel="noreferrer">Visita il sito ↗</a>
+        </article>
+      }
+    </div>
+  </section>
+</main>

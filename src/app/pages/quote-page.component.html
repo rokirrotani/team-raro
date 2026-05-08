@@ -1,0 +1,103 @@
+<main class="quote-page page-shell">
+  <section class="quote-hero build-in build-delay-1">
+    <div class="quote-hero__content">
+      <p class="quote-hero__eyebrow">Preventivo guidato</p>
+      <h1 class="quote-hero__title">Configura il tuo progetto con la nostra piccola AI assistant.</h1>
+      <p class="quote-hero__text">
+        Nessun backend, nessun invio automatico: è una simulazione smart per aiutare il cliente a capire ordine di grandezza e scelte principali.
+      </p>
+    </div>
+
+    <div class="assistant-card">
+      <div class="assistant-card__bubble">
+        Ciao, sono Raro Bot. Ti accompagno passo passo e ti mostro una stima indicativa in base alle scelte che fai.
+      </div>
+
+      <div class="assistant">
+        <div class="assistant__head">
+          <span class="assistant__eye"></span>
+          <span class="assistant__eye"></span>
+        </div>
+        <div class="assistant__body"></div>
+        <span class="assistant__arm assistant__arm--left"></span>
+        <span class="assistant__arm assistant__arm--right"></span>
+        <span class="assistant__leg assistant__leg--left"></span>
+        <span class="assistant__leg assistant__leg--right"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-builder build-in build-delay-2">
+    <div class="quote-builder__form">
+      <article class="quote-block">
+        <h2>{{ siteTypeOptions.title }}</h2>
+        <p>{{ siteTypeOptions.helper }}</p>
+        <div class="quote-options">
+          @for (option of siteTypeOptions.options; track option.value) {
+            <button type="button" class="quote-option" [class.quote-option--active]="selectedSiteType() === option.value" (click)="setSiteType(option.value)">
+              <span class="quote-option__title">{{ option.label }}</span>
+              <span class="quote-option__text">{{ option.description }}</span>
+              <span class="quote-option__price">da {{ option.price }}€</span>
+            </button>
+          }
+        </div>
+      </article>
+
+      <article class="quote-block">
+        <h2>{{ pageOptions.title }}</h2>
+        <p>{{ pageOptions.helper }}</p>
+        <div class="quote-options">
+          @for (option of pageOptions.options; track option.value) {
+            <button type="button" class="quote-option" [class.quote-option--active]="selectedPages() === option.value" (click)="setPages(option.value)">
+              <span class="quote-option__title">{{ option.label }}</span>
+              <span class="quote-option__text">{{ option.description }}</span>
+              <span class="quote-option__price">+{{ option.price }}€</span>
+            </button>
+          }
+        </div>
+      </article>
+
+      <article class="quote-block">
+        <h2>{{ designOptions.title }}</h2>
+        <p>{{ designOptions.helper }}</p>
+        <div class="quote-options">
+          @for (option of designOptions.options; track option.value) {
+            <button type="button" class="quote-option" [class.quote-option--active]="selectedDesign() === option.value" (click)="setDesign(option.value)">
+              <span class="quote-option__title">{{ option.label }}</span>
+              <span class="quote-option__text">{{ option.description }}</span>
+              <span class="quote-option__price">+{{ option.price }}€</span>
+            </button>
+          }
+        </div>
+      </article>
+
+      <article class="quote-block">
+        <h2>Extra utili</h2>
+        <p>Aggiungi solo ciò che serve davvero al progetto.</p>
+        <div class="quote-options">
+          @for (extra of extras(); track extra.value) {
+            <button type="button" class="quote-option" [class.quote-option--active]="selectedExtras().includes(extra.value)" (click)="toggleExtra(extra.value)">
+              <span class="quote-option__title">{{ extra.label }}</span>
+              <span class="quote-option__text">{{ extra.description }}</span>
+              <span class="quote-option__price">+{{ extra.price }}€</span>
+            </button>
+          }
+        </div>
+      </article>
+    </div>
+
+    <aside class="quote-summary">
+      <p class="quote-summary__eyebrow">Stima simulata</p>
+      <h2 class="quote-summary__title">Preventivo indicativo</h2>
+      <p class="quote-summary__range">{{ estimateRange().min }}€ - {{ estimateRange().max }}€</p>
+      <p class="quote-summary__text">
+        Questo valore è solo orientativo: il prezzo finale dipende da obiettivi, materiali forniti, tempi, complessità e richieste fuori standard.
+      </p>
+
+      <div class="quote-summary__tips">
+        <p>Più è chiaro il materiale iniziale, più il progetto resta preciso e rapido.</p>
+        <p>Se vuoi una stima reale, la pagina contatti sarà il passaggio successivo perfetto.</p>
+      </div>
+    </aside>
+  </section>
+</main>

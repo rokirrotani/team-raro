@@ -1,0 +1,18 @@
+<main class="services-page page-shell">
+  <section class="page-hero build-in build-delay-1">
+    <p class="page-hero__eyebrow">Servizi</p>
+    <h1 class="page-hero__title">Soluzioni web pensate per raccontare meglio il tuo business.</h1>
+    <p class="page-hero__text">
+      Costruiamo siti, landing e restyling con una direzione chiara: interfacce belle da vedere, semplici da capire e solide da usare.
+    </p>
+  </section>
+
+  <section class="services-grid build-in build-delay-2">
+    @for (service of serviceGroups(); track service.title) {
+      <article class="service-card">
+        <h2 class="service-card__title">{{ service.title }}</h2>
+        <p class="service-card__text">{{ service.text }}</p>
+      </article>
+    }
+  </section>
+</main>
